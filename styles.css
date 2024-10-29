@@ -1,0 +1,85 @@
+/* Styles de base pour la galerie */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F7F7F8;
+    color: #3A1078;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 1em;
+    background-color: #4E31AA;
+    color: #F7F7F8;
+}
+
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+details {
+    margin-bottom: 1em;
+    border: 1px solid #3795BD;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+summary {
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3A1078;
+    color: #F7F7F8;
+}
+
+.content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Ajustements pour les images et vidéos */
+img, video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries pour le responsive */
+@media (max-width: 768px) {
+    .gallery {
+        padding: 10px;
+    }
+    
+    summary {
+        font-size: 1.1em;
+        padding: 8px;
+    }
+
+    .content {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.5em;
+        padding: 0.5em;
+    }
+
+    summary {
+        font-size: 1em;
+        padding: 6px;
+    }
+
+    .content {
+        padding: 5px;
+        gap: 8px;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie NKW</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Galerie Nate.k.weir</h1>
+    </header>
+
+    <main>
+        <section id="gallery" class="gallery"></section>
+    </main>
+
+    <script>
+        // Charger le fichier JSON et afficher les médias
+        fetch('media.json')
+            .then(response => response.json())
+            .then(data => {
+                const gallery = document.getElementById('gallery');
+                
+                for (let theme in data) {
+                    const details = document.createElement('details');
+                    const summary = document.createElement('summary');
+                    summary.textContent = theme;
+                    details.appendChild(summary);
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'content';
+
+                    data[theme].forEach(item => {
+                        if (item.type === 'image') {
+                            const img = document.createElement('img');
+                            img.src = item.src;
+                            img.alt = `Image de ${theme}`;
+                            contentDiv.appendChild(img);
+                        } else if (item.type === 'video') {
+                            const video = document.createElement('video');
+                            video.src = item.src;
+                            video.controls = true;
+                            contentDiv.appendChild(video);
+                        }
+                    });
+
+                    details.appendChild(contentDiv);
+                    gallery.appendChild(details);
+                }
+            })
+            .catch(error => console.error('Erreur lors du chargement des médias:', error));
+    </script>
+</body>
+</html>
